@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BibliotecaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Autore">
+    <Key>
+      <PropertyRef Name="IdAutor" />
+    </Key>
+    <Property Name="IdAutor" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="750" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="750" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Libros" Relationship="Self.FK_Libros_Autores" FromRole="Autores" ToRole="Libros" />
+  </EntityType>
+  <EntityType Name="EstadosLectura">
+    <Key>
+      <PropertyRef Name="IdEstadoLectura" />
+    </Key>
+    <Property Name="IdEstadoLectura" Type="Int32" Nullable="false" />
+    <Property Name="EstadoLectura" Type="String" MaxLength="750" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Libros" Relationship="Self.FK_Libros_EstadosLectura" FromRole="EstadosLectura" ToRole="Libros" />
+  </EntityType>
+  <EntityType Name="Libro">
+    <Key>
+      <PropertyRef Name="IdLibro" />
+    </Key>
+    <Property Name="IdLibro" Type="Int32" Nullable="false" />
+    <Property Name="Titulo" Type="String" MaxLength="750" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdGenero" Type="Int32" />
+    <Property Name="IdAutor" Type="Int32" />
+    <Property Name="IdEstadoLectura" Type="Int32" />
+    <Property Name="Publicacion" Type="Int32" />
+    <NavigationProperty Name="Autore" Relationship="Self.FK_Libros_Autores" FromRole="Libros" ToRole="Autores" />
+    <NavigationProperty Name="EstadosLectura" Relationship="Self.FK_Libros_EstadosLectura" FromRole="Libros" ToRole="EstadosLectura" />
+    <NavigationProperty Name="Genero" Relationship="BibliotecaModel.FK_Libros_Generos" FromRole="Libro" ToRole="Genero" />
+  </EntityType>
+  <Association Name="FK_Libros_Autores">
+    <End Role="Autores" Type="Self.Autore" Multiplicity="0..1" />
+    <End Role="Libros" Type="Self.Libro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Autores">
+        <PropertyRef Name="IdAutor" />
+      </Principal>
+      <Dependent Role="Libros">
+        <PropertyRef Name="IdAutor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Libros_EstadosLectura">
+    <End Role="EstadosLectura" Type="Self.EstadosLectura" Multiplicity="0..1" />
+    <End Role="Libros" Type="Self.Libro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadosLectura">
+        <PropertyRef Name="IdEstadoLectura" />
+      </Principal>
+      <Dependent Role="Libros">
+        <PropertyRef Name="IdEstadoLectura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BibliotecaEntitiesORM" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Autores" EntityType="Self.Autore" />
+    <EntitySet Name="EstadosLecturas" EntityType="Self.EstadosLectura" />
+    <EntitySet Name="Libros" EntityType="Self.Libro" />
+    <AssociationSet Name="FK_Libros_Autores" Association="Self.FK_Libros_Autores">
+      <End Role="Autores" EntitySet="Autores" />
+      <End Role="Libros" EntitySet="Libros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Libros_EstadosLectura" Association="Self.FK_Libros_EstadosLectura">
+      <End Role="EstadosLectura" EntitySet="EstadosLecturas" />
+      <End Role="Libros" EntitySet="Libros" />
+    </AssociationSet>
+    <EntitySet Name="Generos" EntityType="BibliotecaModel.Genero" />
+    <AssociationSet Name="FK_Libros_Generos" Association="BibliotecaModel.FK_Libros_Generos">
+      <End Role="Genero" EntitySet="Generos" />
+      <End Role="Libro" EntitySet="Libros" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Genero">
+    <Key>
+      <PropertyRef Name="IdGenero" />
+    </Key>
+    <Property Name="IdGenero" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="750" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Libros" Relationship="BibliotecaModel.FK_Libros_Generos" FromRole="Genero" ToRole="Libro" />
+  </EntityType>
+  <Association Name="FK_Libros_Generos">
+    <End Type="BibliotecaModel.Genero" Role="Genero" Multiplicity="0..1" />
+    <End Type="BibliotecaModel.Libro" Role="Libro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genero">
+        <PropertyRef Name="IdGenero" />
+      </Principal>
+      <Dependent Role="Libro">
+        <PropertyRef Name="IdGenero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

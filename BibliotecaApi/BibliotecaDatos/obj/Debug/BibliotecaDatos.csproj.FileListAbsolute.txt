@@ -1,0 +1,12 @@
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\bin\Debug\BibliotecaDatos.dll.config
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\bin\Debug\BibliotecaDatos.dll
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\bin\Debug\BibliotecaDatos.pdb
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\bin\Debug\EntityFramework.dll
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\bin\Debug\EntityFramework.xml
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\obj\Debug\BibliotecaDatos.csprojAssemblyReference.cache
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\obj\Debug\BibliotecaDatos.csproj.CoreCompileInputs.cache
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\obj\Debug\BibliotecaDatos.csproj.CopyComplete
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\obj\Debug\BibliotecaDatos.dll
+C:\Proyectos\Biblioteca\BibliotecaApi\BibliotecaDatos\obj\Debug\BibliotecaDatos.pdb
